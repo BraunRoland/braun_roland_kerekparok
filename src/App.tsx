@@ -3,6 +3,7 @@ import './App.css'
 import Title from './components/Title'
 import { useEffect, useState } from 'react'
 import type { Kerekpar } from './types/kerekparok'
+import Kerekparok from './components/Kerekparok'
 
 function App() {
   const [kerekparLista,setKerekparLista] = useState<Kerekpar[]>([]);
@@ -19,7 +20,11 @@ function App() {
     <>
     <Title/>
     <div className="container">
-      
+      {kerekparLista.map(k => (
+        <Kerekparok
+          kerekpar={k}
+        />
+      ))}
     </div>
     </>
   )
