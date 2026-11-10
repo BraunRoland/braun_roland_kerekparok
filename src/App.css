@@ -5,3 +5,14 @@
 button{
     margin-top: 5px;
 }
+
+.statisztika {
+    font-size: larger;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(172, 172, 172);
+    margin: 15px;
+}
+
+.title {
+    margin-top: 10px;
+}

@@ -4,6 +4,7 @@ import Title from './components/Title'
 import { useEffect, useState } from 'react'
 import type { Kerekpar } from './types/kerekparok'
 import Kerekparok from './components/Kerekparok'
+import Statisztika from './components/Statisztika'
 
 function App() {
   const [kerekparLista,setKerekparLista] = useState<Kerekpar[]>([]);
@@ -13,19 +14,26 @@ function App() {
       const data = await response.json();
       setKerekparLista(data);
     }
+    document.title = 'Kiadó kerékpárok'
     adatBetoltes();
   },[])
 
   return (
     <>
     <Title/>
-    <div className="container">
-      {kerekparLista.map(k => (
-        <Kerekparok
-          kerekpar={k}
+    {kerekparLista.length > 0 && (
+      <div className="container">
+        <Statisztika
+          kerekparLista={kerekparLista}
         />
-      ))}
-    </div>
+        {kerekparLista.map(k => (
+          <Kerekparok
+            kerekpar={k}
+            key={k.id}
+          />
+        ))}
+      </div>
+    )}
     </>
   )
 }
